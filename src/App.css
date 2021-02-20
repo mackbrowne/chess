@@ -1,5 +1,16 @@
 .App {
+  height: 40%;
+  width: 40%;
   text-align: center;
+}
+
+.actions {
+  text-align: center;
+  padding: 20px;
+}
+
+.actionLabel {
+  margin-right: 10px;
 }
 
 .App-logo {

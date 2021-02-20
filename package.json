@@ -9,6 +9,7 @@
     "js-chess-engine": "^0.6.1",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
+    "react-fen-chess-board": "^1.0.1",
     "react-scripts": "4.0.2",
     "web-vitals": "^1.0.1"
   },

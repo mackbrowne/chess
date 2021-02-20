@@ -1,29 +1,63 @@
 import { useState } from "react";
-import logo from "./logo.svg";
-import rickMorty from "./rickMorty.png";
 import "./App.css";
+import { Game } from "js-chess-engine";
+import { ChessBoard, ChessBoardDndProvider } from "react-fen-chess-board";
+
+const game = new Game();
 
 function App() {
-  const [onOff, setOnOff] = useState(false);
+  const [inputValue, setInput] = useState("");
+
+  const [from, setFrom] = useState("");
+
+  const [fen, updateGameBoard] = useState(game.exportFEN());
+  const [status, setJson] = useState(game.exportJson());
+
+  const onSubmit = (event) => {
+
+
+    if (!from) {
+      setFrom(inputValue);
+    } else {
+      try{
+        game.move(from, inputValue);
+      }catch(error){
+        console.log(error);
+      }
+      updateGameBoard(game.exportFEN());
+      setJson(game.exportJson());
+      setFrom("");
+    } 
+
+    setInput("");
+    event.preventDefault();
+  };
 
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={onOff ? logo : rickMorty} className="App-logo" alt="logo" />
-        <button onClick={() => setOnOff(!onOff)}>PRESS ME</button>
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <p>ON OFF is set to {onOff ? "on" : "off"}</p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div className="actions">
+        <p>Turn - {status.turn}</p>
+        <form onSubmit={onSubmit}>
+          <label className="actionLabel">{!from ? "From" : "To"}</label>
+          <input
+            type="text"
+            value={inputValue}
+            onChange={(event) => {
+              setInput(event.target.value);
+            }}
+            onSubmit={onSubmit}
+          />
+        </form>
+      </div>
+      {/* <ChessBoardDndProvider> */}
+      <ChessBoard
+        fen={fen}
+        // onMove={({ fromPosition: from, toPosition: to }) => {
+        //   game.move(from,to);
+        //   updateGameBoard(game.exportFEN());
+        // }}
+      />
+      {/* </ChessBoardDndProvider> */}
     </div>
   );
 }
