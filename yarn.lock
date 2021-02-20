@@ -6574,6 +6574,11 @@ jest@26.6.0:
     import-local "^3.0.2"
     jest-cli "^26.6.0"
 
+js-chess-engine@^0.6.1:
+  version "0.6.1"
+  resolved "https://registry.yarnpkg.com/js-chess-engine/-/js-chess-engine-0.6.1.tgz#a9382a80dcf53e5c63e5a1ff3d903786cc9e0208"
+  integrity sha512-agDyOiM81Rv9EWkoSfOUGRE64IH+RFC9AZwRC1GBwugxF17xWW9y4/9Tbn8XnKhLaU4z0g9j6x+RcBBhLKDWOQ==
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/js-tokens/-/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
